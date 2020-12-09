@@ -32,13 +32,39 @@
 ## 实验要求：
   - 设计学生类（可利用之前的）；
   - 采用_交互式方式_实例化某学生；
-
 ## 实验过程
 1. 用Scanner完成交互式信息输入；
 2. 用InputStreamReader和BufferedReader语句分别创建基于B.txt文件和学生信息的输入流
 3. 用BufferedWriter完成对学生信息和作业内容写入A.txt中；
+4. 运行试验文件的转存。
+## 核心代码
+1. scanner交互式实例化学生
+```
+      ArrayList<Xuesheng> studentArray = new ArrayList<Xuesheng>();    //定义scanner可输入的学生信息
+			Xuesheng a = new Xuesheng();
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("请输入您要查询的字符：");
+			wordForSearch=scanner.nextLine();
+			System.out.print("请输入姓名：");
+```
+2. 创建基于文件和信息的输入流
+```
+InputStreamReader ir =new InputStreamReader(new FileInputStream("D:/B.txt"), "UTF-8");    //创建基于B.txt文件和学生信息的输入流
+	       BufferedReader bf = new BufferedReader(ir);
+	       String poem=bf.readLine();
+	       StringBuffer sb=new StringBuffer();
+	       sb.append(poem);
+```
+3.创建基于文件和信息的输出流
+```
+          File destPath = new File("D:/A.txt");                                //将信息和作业输出到A.text
+	        BufferedWriter bw = new BufferedWriter(new FileWriter(destPath));  
+```
 ## 运行结果
-![](https://github.com/yang-059/interface/blob/main/bsyjs运行结果.PNG)
+1. 标点位置正确，但未完成换行（对应A.txt文件）
+![](https://github.com/yang-059/homework/blob/main/homework运行结果.PNG)
+2. 完成加标点及换行操作，但分割有误（对应A（有误）.txt文件）
+![](https://github.com/yang-059/homework/blob/main/homework运行结果（有误）.PNG)
 ## 编程感想
-## 
-## 
++ 在本次实验中，完成了scanner的交互式实例化和文件或字符的输入输出流；
+  - 不足：没能完美达到换行和加标点同时进行，需加以改正。
